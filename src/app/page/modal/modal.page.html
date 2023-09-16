@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Modal</ion-title>
+    <ion-buttons slot="start">
+    <ion-button (click)="cancelar">Fechar</ion-button>
+  </ion-buttons>
+    <ion-title>Acesso Chat GMW</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Acessar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input [(ngModel)]="nomeUsuario"></ion-input>
+  </ion-item>
+</ion-content>
