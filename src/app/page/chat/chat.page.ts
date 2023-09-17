@@ -37,6 +37,7 @@ export class ChatPage implements OnInit {
   sendMensagem() {
     if (this.novaMensagem.trim() !== '') {
       this.chatService.sendMensagem(this.novaMensagem);
+      this.mensagem.push({user: this.shared.nomeUsuario, mensagem: this.novaMensagem});
       this.novaMensagem = '';
     }
   }

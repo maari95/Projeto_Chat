@@ -1,0 +1,20 @@
+ 
+  .message-card {
+    margin-bottom: 5px; /* Ajuste a margem inferior conforme desejado */
+  }
+ 
+ion-footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+ion-icon{
+    width: 20px;
+    margin-left: 10px;
+}
+ion-button{
+    width: fit-content;
+}
+.page-content{
+    padding: 10px;
+}

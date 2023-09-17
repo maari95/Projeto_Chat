@@ -2,30 +2,30 @@
   <ion-toolbar color="primary">
     <ion-row class="ion-align-items-center">
       <ion-col size="auto">
-        <ion-title>Chat</ion-title>
-      </ion-col>
+        <ion-title >Chat</ion-title>
+        </ion-col>
     </ion-row>
   </ion-toolbar>
 </ion-header>
 
-     <ion-content>
-    <ion-card class="tela">
-      <ion-card class="msg-user" *ngFor="let mensagem of mensagem">
-        <p>{{ mensagem.user }} : {{ mensagem.mensagem }}</p>
-      </ion-card>
-
-      <ion-card class="msg-user" *ngFor="let mensagem of mensagem">
-        <p>{{ mensagem.user }} : {{ mensagem.mensagem }}</p>
-      </ion-card>
+<ion-content>
+    <ion-card class="message-card" *ngFor="let mensagem of mensagem">
+      <p>{{ mensagem.user }}: {{ mensagem.mensagem }}</p> 
     </ion-card>
+  
 
-    <ion-item class="msg">
-      <ion-label position="floating" color="primary">Mensagem</ion-label>
-      <ion-input [(ngModel)]="novaMensagem" placeholder="Digite sua mensagem..."></ion-input>
-      <ion-buttons slot="end">
-        <ion-button expand="full" (click)="sendMensagem()">Enviar</ion-button>
-          <ion-icon name="send"></ion-icon>
-         </ion-buttons>
-    </ion-item>
-  </ion-content>
-
+  <ion-footer>
+    <ion-toolbar>
+      <ion-row class="message-input-row">
+        <ion-col size="8">
+          <ion-input [(ngModel)]="novaMensagem" placeholder="Digite sua mensagem..." class="text-input"></ion-input>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button (click)="sendMensagem()" class="send-button">
+            Enviar<ion-icon name="send"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+  
