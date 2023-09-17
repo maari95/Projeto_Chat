@@ -1,22 +1,29 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable, timestamp } from 'rxjs';
-
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
-  Mensagem: any;
 
-  constructor(private data: AngularFireDatabase) { }
+  Mensagem: any;
+  nomeUsuario: string='';
+
+  constructor(private data: AngularFireDatabase, 
+    private shared: SharedService) {
+
+    this.nomeUsuario=this.shared.getNomeUsuario();
+     }
 
   
-  setUser(user: string){
-    localStorage.setItem('user', user);
+  setUser(){
+    return this.shared.setUsuario('nomeUsuario');
   }
-  getUser(): string | null {
-    return localStorage.getItem('user');
+
+  getUser(){
+    return this.shared.getNomeUsuario();
   }
   
   getMensagem(): Observable<any> {

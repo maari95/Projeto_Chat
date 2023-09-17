@@ -8,8 +8,8 @@ export class SharedService {
   nomeUsuario: string = '';
 
 
-  setUsuario(nome: string){
-    this.nomeUsuario=nome;
+  setUsuario(nomeUsuario: string){
+    this.nomeUsuario=nomeUsuario;
   }
   getNomeUsuario(){
     return this.nomeUsuario;

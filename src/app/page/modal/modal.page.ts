@@ -19,6 +19,10 @@ export class ModalPage implements OnInit {
     ) { }
 
   
+  setUsername(){
+    this.shared.setUsuario(this.nomeUsuario);
+  }  
+
   ngOnInit() {}
 
   cancelar() {

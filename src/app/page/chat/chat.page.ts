@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/model/chat.service';
 import { ModalController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
+import { SharedService } from 'src/app/model/shared.service';
 
 @Component({
   selector: 'app-chat',
@@ -15,7 +16,12 @@ export class ChatPage implements OnInit {
   novaMensagem: string = '';
 
 
-  constructor(private chatService: ChatService, private modalCtrl:ModalController)  { }
+  constructor(private chatService: ChatService, 
+    private modalCtrl:ModalController, 
+    private shared: SharedService)  {
+      
+      this.user=this.shared.getNomeUsuario();
+     }
 
   ngOnInit() {
     this.chatService.getMensagem().subscribe((mensagem) => {
