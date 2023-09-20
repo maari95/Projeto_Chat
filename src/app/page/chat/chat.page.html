@@ -10,7 +10,7 @@
 
 <ion-content>
     <ion-card class="message-card" *ngFor="let mensagem of mensagem">
-      <p>{{ mensagem.user }}: {{ mensagem.mensagem }}</p> 
+      <p>{{ mensagem.user }}: {{ mensagem.mensagem }}</p><p id="data">{{data1 | date : 'dd/MM/yy HH:mm'}}</p> 
     </ion-card>
 </ion-content>
 

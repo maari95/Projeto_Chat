@@ -2,6 +2,8 @@
   padding: 0px 10px;
   box-sizing: border-box;
   margin-bottom: 5px;
+  border-radius: 20px;
+  margin-bottom: auto;
   /* Ajuste a margem inferior conforme desejado */
 }
 
@@ -21,4 +23,7 @@ ion-button {
 
 .page-content {
   padding: 10px;
+}
+#data{
+  text-align: right;
 }

@@ -7,6 +7,8 @@ export class SharedService {
 
   nomeUsuario: string = '';
 
+  constructor() {
+   }
 
   setUsuario(nomeUsuario: string){
     this.nomeUsuario=nomeUsuario;
@@ -15,5 +17,4 @@ export class SharedService {
     return this.nomeUsuario;
   }
 
-  constructor() { }
 }

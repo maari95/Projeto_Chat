@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/model/chat.service';
 import { ModalController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
-import { SharedService } from 'src/app/model/shared.service';
+import { LocalstorageService } from 'src/app/model/localstorage.service';
 
 @Component({
   selector: 'app-chat',
@@ -10,7 +10,8 @@ import { SharedService } from 'src/app/model/shared.service';
   styleUrls: ['./chat.page.scss'],
 })
 export class ChatPage implements OnInit {
-
+  
+  data1 = new Date();
   mensagem: { user: string, mensagem: string }[] = [];
   user: string='';
   novaMensagem: string = '';
@@ -18,10 +19,7 @@ export class ChatPage implements OnInit {
 
   constructor(private chatService: ChatService, 
     private modalCtrl:ModalController, 
-    private shared: SharedService)  {
-      
-      this.user=this.shared.getNomeUsuario();
-     }
+    private service: LocalstorageService)  {}
 
   ngOnInit() {
     this.chatService.getMensagem().subscribe((mensagem) => {
@@ -29,18 +27,31 @@ export class ChatPage implements OnInit {
     });
 
   }
+
   salvarNomeUsuario(){
     if(this.user.trim() !== ''){
       localStorage.setItem('user', this.user);
+      this.user='';
     }
   }
+  getNomeUsuario(){
+    if(this.user){
+      const value = this.service.getNomeUsuario();
+      alert (value || 'Item não encontrado');
+      this.user = '';
+    }
+  }
+
   sendMensagem() {
     if (this.novaMensagem.trim() !== '') {
       this.chatService.sendMensagem(this.novaMensagem);
-      this.mensagem.push({user: this.shared.nomeUsuario, mensagem: this.novaMensagem});
+      this.mensagem.push({user: this.user, mensagem: this.novaMensagem});
       this.novaMensagem = '';
+
+
     }
   }
+  
   async abrirModalLogin() {
     const modal = await this.modalCtrl.create({
       component: ModalPage,
@@ -52,6 +63,7 @@ export class ChatPage implements OnInit {
         
       }
     });
+
   }
 }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { SharedService } from 'src/app/model/shared.service';
+import { LocalstorageService } from 'src/app/model/localstorage.service';
 import { ChatService } from 'src/app/model/chat.service';
 
 @Component({
@@ -15,13 +15,8 @@ export class ModalPage implements OnInit {
 
   constructor(private modalCtrl: ModalController, 
     private router: Router,
-    private shared: SharedService
+    private service: LocalstorageService
     ) { }
-
-  
-  setUsername(){
-    this.shared.setUsuario(this.nomeUsuario);
-  }  
 
   ngOnInit() {}
 
@@ -37,7 +32,7 @@ export class ModalPage implements OnInit {
 
     if (this.nomeUsuario != '') {
       // Autenticação bem-sucedida, feche o modal e realize ações adicionais, como redirecionar o usuário.
-      this.shared.setUsuario(this.nomeUsuario);
+      this.service.setNomeUsuario(this.nomeUsuario);
       await this.modalCtrl.dismiss({ success: true });
       this.redirecionarUsuarioParaChat();
         
